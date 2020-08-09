@@ -19,8 +19,23 @@ class GraveyardSerializer(serializers.ModelSerializer):
         return obj.places.filter(is_busy=False).count()
 
 
+class GraveyardInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Graveyard
+        fields = ['id', 'name', 'address']
+
+
+class PlaceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Place
+        fields = ['id', 'is_busy', 'number']
+
+
 class PlaceInfoSerializer(serializers.ModelSerializer):
     owner = UsersSerializer(many=False)
+    location = GraveyardInfoSerializer(many=False)
 
     class Meta:
         model = Place
