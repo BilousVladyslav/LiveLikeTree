@@ -15,6 +15,6 @@ class Order(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(choices=STATUSES, default=WAIT_FOR_PAY, max_length=50)
     places = models.ManyToManyField(Place, related_name='orders')

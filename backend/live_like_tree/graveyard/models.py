@@ -14,9 +14,9 @@ class Graveyard(models.Model):
 class Place(models.Model):
     id = models.AutoField(primary_key=True)
     number = models.IntegerField(blank=False)
-    location = models.ForeignKey(Graveyard, on_delete=models.CASCADE)
+    location = models.ForeignKey(Graveyard, on_delete=models.CASCADE, related_name='places')
     tree = models.CharField(max_length=150)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, related_name='places')
     tree_status = models.CharField(max_length=100)
     is_busy = models.BooleanField(default=False)
 
