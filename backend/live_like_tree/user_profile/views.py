@@ -2,11 +2,19 @@ from rest_framework.filters import SearchFilter
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
-from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, ListModelMixin
+from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, \
+    ListModelMixin, CreateModelMixin
 
 from django.contrib.auth import get_user_model
 
-from .serializers import UserProfileSerializer, UsersSerializer
+from .serializers import UserProfileSerializer, UsersSerializer, RegisterUserSerializer
+
+
+class UserRegistration(GenericAPIView, CreateModelMixin):
+    serializer_class = RegisterUserSerializer
+
+    def post(self, request):
+        return self.create(request)
 
 
 class UserProfile(GenericAPIView, UpdateModelMixin, RetrieveModelMixin, DestroyModelMixin):

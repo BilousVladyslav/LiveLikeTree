@@ -6,7 +6,6 @@ from user_profile.urls import profile_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/auth/', include('djoser.urls')),
 ]
 
 urlpatterns += profile_urlpatterns
