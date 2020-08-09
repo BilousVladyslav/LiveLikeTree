@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'user_profile',
+    'graveyard',
+    'orders'
 ]
 
 MIDDLEWARE = [
