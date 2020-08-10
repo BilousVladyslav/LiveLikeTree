@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Graveyard(models.Model):
@@ -21,4 +23,10 @@ class Place(models.Model):
     is_busy = models.BooleanField(default=False)
 
 
-
+@receiver(post_save, sender=Graveyard)
+def create_places(sender, instance=None, created=False, **kwargs):
+    print(instance)
+    print(created)
+    if created:
+        for number in range(1, instance.width * instance.length + 1):
+            Place.objects.create(number=number, location=instance)
