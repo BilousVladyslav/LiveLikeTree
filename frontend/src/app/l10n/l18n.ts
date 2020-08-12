@@ -2,7 +2,8 @@ export const i18nAsset = {
     'en-US': {
       changeLocale: 'Change language',
       home: {
-        title: 'Home'
+        title: 'Home',
+        about: 'The system provides the ability to set up a fundamentally new type of hoarding, which will serve as solutions to ecological problems, as well as to problems of redevelopment of storerooms. Transmission system in conjunction with crematoria. The coristors of the Live Like Tree are the relatives of the dead man, so turn the tree and place into the pantry. In addition, the system gathers information about how to grow trees, to minimize the number of situations, if the tree is sick.'
       },
       login: {
         title: 'Login',
@@ -117,7 +118,8 @@ export const i18nAsset = {
     'uk-UA': {
       changeLocale: 'Змінити мову',
       home: {
-        title: 'Головна'
+        title: 'Головна',
+        about: 'Система надає можливість створити принципово новий тип поховань, який стане як рішенням екологічної проблеми, так і проблеми переповнених кладовищ. Система передбачає взаємодію з крематоріями. Користувачі Live Like Tree - родичі померлого, що матимуть змогу обрати дерево та ділянку для поховання на кладовищі. Крім того система збиратиме інформацію щодо стану дерев, щоб мінімізувати кількість ситуацій, коли дерево хворіє.'
       },
       login: {
         title: 'Авторизація',

@@ -19,13 +19,17 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 import { LoginComponent } from './shared/components/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavigationComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent,
+    HomePageComponent
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),
