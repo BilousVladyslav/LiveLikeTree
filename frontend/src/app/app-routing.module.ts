@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 
@@ -14,10 +15,10 @@ const routes: Routes = [
     path: 'register',
     component: RegistrationComponent
   },
-  // {
-  //   path: 'profile',
-  //   component: UserProfileComponent
-  // },
+  {
+    path: 'profile',
+    component: UserProfileComponent
+  },
   // {
   //   path: 'machines/edit/:machineNumber',
   //   component: MachineEditComponent

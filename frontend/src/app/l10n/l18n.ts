@@ -29,7 +29,8 @@ export const i18nAsset = {
         profile: 'Profile',
         home: 'Home',
         graveyards: 'Graveyards',
-        places: 'My places'
+        places: 'My places',
+        orders: 'My orders'
       },
       register: {
         title: 'New user registration',
@@ -96,21 +97,6 @@ export const i18nAsset = {
           required: 'Last name is a required',
           max_length: 'Last name requires maximum 50 symbols',
           regex: 'Last name must consists of uppercase and lowercase Latin letters'
-        },
-        old_password: {
-          placeholder: 'Password',
-          required: 'Password is a required'
-        },
-        new_password: {
-          placeholder: 'New password',
-          required: 'Password is a required',
-          min_length: 'Password must be a minimum of 6 characters',
-          regex: 'Password must have uppercase and lowercase Latin letters, digit and character'
-        },
-        password_confirm: {
-          placeholder: 'Confirm the password',
-          required: 'Password confirming is a required',
-          must_match: 'Passwords doesn\'t mutch'
         },
         save: 'Save changes'
       }
@@ -188,7 +174,8 @@ export const i18nAsset = {
         profile: 'Профіль',
         home: 'Головна',
         graveyards: 'Кладовища',
-        places: 'Мої ділянки'
+        places: 'Мої ділянки',
+        orders: 'Мої замовлення'
       },
       profile: {
         title: 'Персональна інформація',
@@ -212,21 +199,6 @@ export const i18nAsset = {
           required: 'Прізвище обов\'язкове',
           max_length: 'Прізвище може складати максимум 50 букв',
           regex: 'Прізвище має складати великі та малі латинські букви'
-        },
-        old_password: {
-          placeholder: 'Пароль',
-          required: 'Пароль обов\'язковий'
-        },
-        new_password: {
-          placeholder: 'Новий пароль',
-          required: 'Новий пароль обов\'язковий',
-          min_length: 'Пароль має складати мінімум 6 символів',
-          regex: 'Пароль має містити букви верхнього та нижнього регістрів, цифри та символи'
-        },
-        password_confirm: {
-          placeholder: 'Підтвердіть пароль',
-          required: 'Підтвердження паролю обов\'язкове',
-          must_match: 'Паролі не співпадають'
         },
         save: 'Зберегти зміни'
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, Inject, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -56,7 +56,10 @@ export class LoginComponent implements OnInit {
     this.subscription = this.authenticationService
       .login(loginViewModel)
       .subscribe(
-        res => this.router.navigate(['']),
+        res => {
+          document.getElementById('closeModal').click();
+          this.router.navigate(['']);
+        },
         errors => this.errorMessage = errors.message);
   }
 
