@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#">LiveLikeTree</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="/" class="nav-link">{{ 'navbar.home' | translate:locale.language }}</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/graveyards" class="nav-link">{{ 'navbar.graveyards' | translate:locale.language }}</a>
+      </li>
+      <li *ngIf="isLogged" class="nav-item active">
+        <a routerLink="/profile" class="nav-link">{{ 'navbar.profile' | translate:locale.language }}</a>
+      </li>
+      <li *ngIf="isLogged" class="nav-item active">
+        <a routerLink="/my_places" class="nav-link">{{ 'navbar.places' | translate:locale.language }}</a>
+      </li>
+    </ul>
+    
+    <div class="dropdown mx-3">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ 'changeLocale' | translate:locale.language }}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" *ngFor="let item of schema" (click)="setLocale(item.locale)">{{ item.text }}</a>
+        </div>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li *ngIf="isLogged" class="mx-auto">
+        <button mat-raised-button (click)="logOut()">{{ 'navbar.logout' | translate:locale.language }}</button>
+      </li>
+      <li *ngIf="!isLogged" class="mx-auto">
+        <button mat-raised-button routerLink="/register" class="mr-3">{{ 'login.register.action' | translate:locale.language }}</button>
+        <app-login class="ml-auto"></app-login>
+      </li>
+    </ul>
+  </div>
+</nav>
