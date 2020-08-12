@@ -22,6 +22,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     LoginComponent,
     RegistrationComponent,
     HomePageComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    GraveyardsListComponent
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),

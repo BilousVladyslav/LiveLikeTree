@@ -1,0 +1,27 @@
+<div class="container col-10 mx-auto">
+    <h4 class="m-3" style="color: white">{{ 'graveyards_list.title' | translate:locale.language }}</h4>
+
+    <div class='row'>
+
+        <div *ngFor="let item of graveyards" class="col-xl-4 col-sm-6">
+            <mat-card *ngFor="let item of graveyards" class="m-2">
+                <mat-card-header>
+                    <mat-icon mat-card-avatar aria-hidden="false" aria-label="Example home icon">nature</mat-icon>
+                    <mat-card-title>{{item.name}}</mat-card-title>
+                    <mat-card-subtitle>{{item.address}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{ 'graveyards_list.places' | translate:locale.language }}: {{item.free_places_count}}</p>
+                    <p>{{ 'graveyards_list.price' | translate:locale.language }}: {{item.default_place_price}} USD</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button routerLink="/graveyards/{{item.id}}">{{ 'graveyards_list.link' | translate:locale.language }}</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+    </div>
+    
+
+<div>
+

@@ -99,6 +99,12 @@ export const i18nAsset = {
           regex: 'Last name must consists of uppercase and lowercase Latin letters'
         },
         save: 'Save changes'
+      },
+      graveyards_list: {
+        title: 'Graveyards',
+        places: 'Free places count',
+        price: 'Default place price',
+        link: 'View'
       }
     },
     'uk-UA': {
@@ -201,6 +207,12 @@ export const i18nAsset = {
           regex: 'Прізвище має складати великі та малі латинські букви'
         },
         save: 'Зберегти зміни'
+      },
+      graveyards_list: {
+        title: 'Кладовища',
+        places: 'Кількість вільних місць',
+        price: 'Стандартна ціна за місце',
+        link: 'Переглянути'
       }
     }
   };
