@@ -25,8 +25,6 @@ class Place(models.Model):
 
 @receiver(post_save, sender=Graveyard)
 def create_places(sender, instance=None, created=False, **kwargs):
-    print(instance)
-    print(created)
     if created:
         for number in range(1, instance.width * instance.length + 1):
             Place.objects.create(number=number, location=instance)

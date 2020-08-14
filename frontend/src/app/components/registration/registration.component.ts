@@ -64,7 +64,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   registerComplete(): void {
-    var registerUsertViewModel = this.registerForm.value as RegistrationModel;
+    const registerUsertViewModel = this.registerForm.value as RegistrationModel;
     this.register_user(registerUsertViewModel);
   }
 

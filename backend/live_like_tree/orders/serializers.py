@@ -13,14 +13,22 @@ class PlaceInfoSerializer(serializers.Serializer):
     tree = serializers.CharField(max_length=150, required=True)
 
 
+class OrderInfoSerializer(serializers.ModelSerializer):
+    places = PlaceInfoSerializer(many=True)
+    graveyard = serializers.SlugRelatedField(slug_field='name', read_only=True)
+
+    class Meta:
+        model = Order
+        fields = ['graveyard', 'places', 'id', 'to_pay', 'created', 'status']
+
+
 class OrderSerializer(serializers.ModelSerializer):
     places = PlaceInfoSerializer(many=True)
     graveyard = serializers.SlugRelatedField(slug_field='id', queryset=Graveyard.objects.all())
 
     class Meta:
         model = Order
-        fields = ['graveyard', 'places', 'id', 'to_pay', 'created', 'status']
-        read_only_fields = ['to_pay', 'created', 'status']
+        fields = ['graveyard', 'places']
 
     def validate(self, attrs):
         queryset = Place.objects.filter(location=attrs['graveyard'], is_busy=False)

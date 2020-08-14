@@ -23,4 +23,9 @@ export class OrdersService {
   GetOrders(): Observable<OrderInfoModel[]> {
     return this.http.get<OrderInfoModel[]>(this.controllerUrl);
   }
+
+  UpdateOrderStatus(order: ManageOrderModel): Observable<ManageOrderModel> {
+    const url = this.controllerUrl + 'manage/' + order.id + '/';
+    return this.http.put<ManageOrderModel>(url, order);
+  }
 }

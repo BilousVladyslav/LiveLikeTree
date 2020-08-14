@@ -127,6 +127,21 @@ export const i18nAsset = {
           total: 'Total price',
           create: 'Create order'
         }
+      },
+      orders: {
+        title: 'My orders',
+        subtitle: 'Order number',
+        created: 'Created at',
+        status: {
+          paid: 'Paid',
+          waiting: 'Waiting for pay',
+          cancelled: 'Cancelled'
+        },
+        places: 'Places',
+        number: 'Number',
+        pay: 'Pay',
+        cancell: 'Cancell',
+        total: 'Total'
       }
     },
     'uk-UA': {
@@ -259,6 +274,21 @@ export const i18nAsset = {
         },
         success: 'Order successfully created.',
         close: 'Close'
+      },
+      orders: {
+        title: 'Мої замовлення',
+        subtitle: 'Замовлення номер',
+        created: 'Створено',
+        status: {
+          paid: 'Сплачено',
+          waiting: 'Очікує на оплату',
+          cancelled: 'Відмінений'
+        },
+        places: 'Місця',
+        number: 'Номер',
+        pay: 'Сплатити',
+        cancell: 'Відмінити',
+        total: 'Всього'
       }
     }
   };

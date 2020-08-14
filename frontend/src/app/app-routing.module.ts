@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
 import { GraveyardComponent } from './components/graveyard/graveyard.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'graveyards/:id',
     component: GraveyardComponent
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   },
 ];
 

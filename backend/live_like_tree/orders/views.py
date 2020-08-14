@@ -14,14 +14,19 @@ class OrdersViewSet(GenericViewSet,
                     CreateModelMixin):
     permission_classes = [IsAuthenticated]
     authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
-    serializer_class = serializers.OrderSerializer
     lookup_field = 'id'
 
     def get_queryset(self):
-        return Order.objects.filter(owner=self.request.user)
+        return Order.objects.filter(owner=self.request.user).order_by('-created')
 
     def get_serializer_context(self):
         return {'user': self.request.user}
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return serializers.OrderInfoSerializer
+        else:
+            return serializers.OrderSerializer
 
 
 class OrdersStatusViewSet(GenericViewSet,
