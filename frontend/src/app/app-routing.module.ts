@@ -4,7 +4,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
-
+import { GraveyardComponent } from './components/graveyard/graveyard.component';
 
 
 const routes: Routes = [
@@ -24,10 +24,10 @@ const routes: Routes = [
     path: 'graveyards',
     component: GraveyardsListComponent
   },
-  // {
-  //   path: 'machines/edit/:machineNumber',
-  //   component: MachineEditComponent
-  // },
+  {
+    path: 'graveyards/:id',
+    component: GraveyardComponent
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,80 @@
+<div *ngIf="graveyard" class="col-11 mx-auto my-5">
+    <h2 class="text-center mb-3" style="color: white">{{graveyard.name}}</h2>
+    <h5 style="color: white" class="d-flex">
+        <mat-icon aria-hidden="false" class="mr-2">place</mat-icon>
+        {{ 'graveyard.address' | translate:locale.language }}: {{graveyard.address}}
+    </h5>
+    <h5 style="color: white" class="d-flex">
+        <mat-icon aria-hidden="false" class="mr-2">monetization_on</mat-icon>
+        {{ 'graveyard.price' | translate:locale.language }}: {{graveyard.default_place_price}} USD
+    </h5>
+    <mat-divider class="m-3"></mat-divider>
+    <h4 class="text-center mb-4" style="color: white">
+        {{ 'graveyard.map.title' | translate:locale.language }}:
+    </h4>
+    <p *ngIf="isLogged" style="color: white" class="mx-3 mb-4">
+        {{ 'graveyard.map.description' | translate:locale.language }}
+    </p>
+    <mat-grid-list cols="{{graveyard.length}}" rowHeight="50px">
+        <ng-container *ngFor="let place of places">
+        
+            <mat-grid-tile
+                *ngIf="!isLogged || place.is_busy"
+                [colspan]="1"
+                [rowspan]="1"
+                [style.background]="getColor(place.is_busy, place.id)">
+                {{place.number}}
+            </mat-grid-tile>
+            
+            <mat-grid-tile
+                *ngIf="isLogged && !place.is_busy"
+                mat-ripple
+                [colspan]="1"
+                [rowspan]="1"
+                [style.background]="getColor(place.is_busy, place.id)"
+                (click)='selectPlace(place)'>
+                {{place.number}}
+            </mat-grid-tile>
+
+        </ng-container>
+    </mat-grid-list>
+
+    <form [formGroup]="orderFormGroup" *ngIf="isLogged && selectedPlaces.length != 0" class="mx-5">
+            <h4 class="text-center my-3" style="color: white">
+                {{ 'graveyard.order.title' | translate:locale.language }}:
+            </h4>
+
+            <div formArrayName="places" *ngFor="let place of orderFormGroup.get('places').controls; let i = index;">
+                <mat-card [formGroupName]="i" class="mb-3">
+                    <mat-card-header>
+                        {{ 'graveyard.order.place.number' | translate:locale.language }} {{place.get('number').value}}
+                    </mat-card-header>
+                    
+                    <mat-card-content class="p-3 m-0">
+                        <mat-form-field class="w-100">
+                            <input matInput formControlName="tree" placeholder="{{ 'graveyard.order.place.tree.placeholder' | translate:locale.language }}">
+                            <mat-error *ngIf="place.controls.tree.errors && (place.controls.tree.dirty || place.controls.tree.touched)">
+                                <mat-error *ngIf="place.controls.tree.errors.required" class="error-message">
+                                *{{ 'graveyard.order.place.tree.required' | translate:locale.language }}
+                                </mat-error>
+                                <mat-error *ngIf="place.controls.tree.errors.minLength" class="error-message">
+                                *{{ 'graveyard.order.place.tree.minLength' | translate:locale.language }}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-card-content>
+
+                    <mat-card-footer class="px-4 py-2">
+                        {{ 'graveyard.order.place.price' | translate:locale.language }}: {{graveyard.default_place_price}} USD
+                    </mat-card-footer>
+                </mat-card>
+            </div>
+
+            <h5 class="my-3" style="color: white">
+                {{ 'graveyard.order.total' | translate:locale.language }}: {{graveyard.default_place_price * selectedPlaces.length}} USD
+            </h5>
+
+            <button mat-flat-button color="accent" (click)="onSubmit()" [disabled]="!formIsValid()">{{ 'graveyard.order.create' | translate:locale.language }}</button>
+        </form>
+        
+</div>

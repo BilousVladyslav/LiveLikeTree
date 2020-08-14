@@ -105,6 +105,28 @@ export const i18nAsset = {
         places: 'Free places count',
         price: 'Default place price',
         link: 'View'
+      },
+      graveyard: {
+        address: 'Address',
+        price: 'Place price',
+        map: {
+          title: 'Graveyard map',
+          description: 'Click on free place, if you want to buy it.'
+        },
+        order: {
+          title: 'Creating an order',
+          place: {
+            number: 'Place number',
+            tree: {
+              placeholder: 'The type of tree you want to plant',
+              required: 'This field is a required',
+              minLength: 'This fieeld must have minimum 5 symbols'
+            },
+            price: 'Price'
+          },
+          total: 'Total price',
+          create: 'Create order'
+        }
       }
     },
     'uk-UA': {
@@ -213,6 +235,30 @@ export const i18nAsset = {
         places: 'Кількість вільних місць',
         price: 'Стандартна ціна за місце',
         link: 'Переглянути'
+      },
+      graveyard: {
+        address: 'Адреса',
+        price: 'Ціна за місце',
+        map: {
+          title: 'Карта кладовища',
+          description: 'Клікніть на місце, якщо бажаєте купити його.'
+        },
+        order: {
+          title: 'Створення замовлення',
+          place: {
+            number: 'Номер місця',
+            tree: {
+              placeholder: 'Сорт дерева, яке ви бажаєте посадити',
+              required: 'Це поле обов\'язкове',
+              minLength: 'Це поле має містити не менше 5 символів'
+            },
+            price: 'Ціна'
+          },
+          total: 'Всього до сплати',
+          create: 'Створити замовлення'
+        },
+        success: 'Order successfully created.',
+        close: 'Close'
       }
     }
   };

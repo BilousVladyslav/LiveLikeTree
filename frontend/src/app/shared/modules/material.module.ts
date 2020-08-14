@@ -14,6 +14,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRippleModule} from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -33,7 +37,10 @@ import {MatCardModule} from '@angular/material/card';
     MatExpansionModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatRippleModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

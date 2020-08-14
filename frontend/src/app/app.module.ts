@@ -23,6 +23,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
+import { GraveyardComponent } from './components/graveyard/graveyard.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GraveyardsListComponent } from './components/graveyards-list/graveyards
     RegistrationComponent,
     HomePageComponent,
     UserProfileComponent,
-    GraveyardsListComponent
+    GraveyardsListComponent,
+    GraveyardComponent
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),
