@@ -1,0 +1,50 @@
+<div class="container col-10 mx-auto">
+    <h4 class="m-4" style="color: white">{{ 'places.title' | translate:locale.language }}</h4>
+
+    <table mat-table [dataSource]="places" class="mat-elevation-z8 w-100">
+
+        <!-- Graveyard Column -->
+        <ng-container matColumnDef="graveyardName">
+            <th mat-header-cell *matHeaderCellDef> {{ 'places.graveyard' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.location.name}} </td>
+        </ng-container>
+
+        <!-- Graveyard address Column -->
+        <ng-container matColumnDef="graveyardAddress">
+            <th mat-header-cell *matHeaderCellDef> {{ 'places.address' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.location.address}} </td>
+        </ng-container>
+
+        <!-- Place number Column -->
+        <ng-container matColumnDef="placeNumber">
+            <th mat-header-cell *matHeaderCellDef> {{ 'places.number' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+        </ng-container>
+
+        <!-- Tree Column -->
+        <ng-container matColumnDef="tree">
+            <th mat-header-cell *matHeaderCellDef> {{ 'places.tree' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.tree}} </td>
+        </ng-container>
+
+        <!-- Tree status Column -->
+        <ng-container matColumnDef="treeStatus">
+            <th mat-header-cell *matHeaderCellDef> {{ 'places.status.title' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-chip-list [ngSwitch]="element.tree_status">
+                    <mat-chip *ngSwitchCase="'Grows'" color="accent" selected>{{ 'places.status.grows' | translate:locale.language }}</mat-chip>
+                    <mat-chip *ngSwitchCase="'Owergrown'" color="primary" selected>{{ 'places.status.owergrown' | translate:locale.language }}</mat-chip>
+                    <mat-chip *ngSwitchCase="'Looks unhealthy'" color="primary" selected>{{ 'places.status.unhealthy' | translate:locale.language }}</mat-chip>
+                    <mat-chip *ngSwitchCase="'Dried up'" color='warm' selected>{{ 'places.status.dried' | translate:locale.language }}</mat-chip>
+                    <mat-chip *ngSwitchCase="'Broken'" color='warm' selected>{{ 'places.status.broken' | translate:locale.language }}</mat-chip>
+                    <mat-chip *ngSwitchDefault color='warm' selected>{{element.tree_status}}</mat-chip>
+                </mat-chip-list> 
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+<div>
+

@@ -1,19 +1,18 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CreateOrderModel, OrderInfoModel, ManageOrderModel } from 'src/app/shared/models/order.model';
+import { OrderInfoModel, ManageOrderModel } from 'src/app/shared/models/order.model';
 import { AuthorizationService } from 'src/app/core/services/authorization.service';
 import { OrdersService } from 'src/app/core/services/orders.service';
 import { L10N_LOCALE, L10nLocale } from 'angular-l10n';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   orders: OrderInfoModel[];
 
@@ -21,8 +20,6 @@ export class OrdersComponent implements OnInit {
     private authService: AuthorizationService,
     private ordersServise: OrdersService,
     private router: Router,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
@@ -56,7 +53,7 @@ export class OrdersComponent implements OnInit {
       });
   }
 
-  onPay(orderId, toPay){
+  onPay(orderId, toPay): void{
     const orderPay = {
       id: orderId,
       to_pay: toPay,
@@ -65,7 +62,7 @@ export class OrdersComponent implements OnInit {
     this.sendOrder(orderPay);
   }
 
-  onCancell(orderId){
+  onCancell(orderId): void{
     const orderPay = {
       id: orderId,
       to_pay: 0,
@@ -74,4 +71,9 @@ export class OrdersComponent implements OnInit {
     this.sendOrder(orderPay);
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription){
+      this.subscription.unsubscribe();
+    }
+  }
 }

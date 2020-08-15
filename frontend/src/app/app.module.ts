@@ -25,6 +25,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
 import { GraveyardComponent } from './components/graveyard/graveyard.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { PlacesComponent } from './components/places/places.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     UserProfileComponent,
     GraveyardsListComponent,
     GraveyardComponent,
-    OrdersComponent
+    OrdersComponent,
+    PlacesComponent
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),

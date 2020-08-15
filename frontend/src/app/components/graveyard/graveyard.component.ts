@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
   templateUrl: './graveyard.component.html',
   styleUrls: ['./graveyard.component.css']
 })
-export class GraveyardComponent implements OnInit {
+export class GraveyardComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   graveyardId: string;
   graveyard: GraveyardModel;

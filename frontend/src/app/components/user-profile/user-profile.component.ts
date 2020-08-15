@@ -14,7 +14,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   user: UserProfileModel = new UserProfileModel();
   userProfileForm: FormGroup;
@@ -74,5 +74,4 @@ export class UserProfileComponent implements OnInit {
       this.subscription.unsubscribe();
     }
   }
-
 }

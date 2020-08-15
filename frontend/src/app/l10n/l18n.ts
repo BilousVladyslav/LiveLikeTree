@@ -142,6 +142,21 @@ export const i18nAsset = {
         pay: 'Pay',
         cancell: 'Cancell',
         total: 'Total'
+      },
+      places: {
+        title: 'My places',
+        graveyard: 'Graveyard',
+        address: 'Graveyard address',
+        number: 'Place number',
+        tree: 'Tree',
+        status: {
+          title: 'Tree status',
+          grows: 'Grows',
+          owergrown: 'Owergrown',
+          unhealthy: 'Looks unhealthy',
+          dried: 'Dried up',
+          broken: 'Broken',
+        }
       }
     },
     'uk-UA': {
@@ -289,6 +304,21 @@ export const i18nAsset = {
         pay: 'Сплатити',
         cancell: 'Відмінити',
         total: 'Всього'
+      },
+      places: {
+        title: 'Мої ділянки',
+        graveyard: 'Кладовище',
+        address: 'Адреса кладовища',
+        number: 'Номер ділянки',
+        tree: 'Дерево',
+        status: {
+          title: 'Статус дерева',
+          grows: 'Росте',
+          owergrown: 'Заросло',
+          unhealthy: 'Виглядає нездоровим',
+          dried: 'Засохло',
+          broken: 'Зламане',
+        }
       }
     }
   };

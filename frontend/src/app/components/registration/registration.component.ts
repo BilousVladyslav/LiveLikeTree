@@ -19,7 +19,7 @@ import { UserLogin } from 'src/app/shared/models/user-login.model';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
   private subscription: Subscription;
   errorMessage: string = null;
@@ -58,7 +58,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.registerForm.status === 'VALID') {
+    if (this.registerForm.valid) {
       this.registerComplete();
     }
   }
@@ -91,5 +91,4 @@ export class RegistrationComponent implements OnInit {
       this.subscription.unsubscribe();
     }
   }
-
 }

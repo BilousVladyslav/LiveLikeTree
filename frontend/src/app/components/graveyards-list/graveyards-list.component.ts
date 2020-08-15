@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GraveyardModel } from 'src/app/shared/models/graveyard.model';
 import { GraveyardsService } from 'src/app/core/services/graveyards.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './graveyards-list.component.html',
   styleUrls: ['./graveyards-list.component.css']
 })
-export class GraveyardsListComponent implements OnInit {
+export class GraveyardsListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   graveyards: GraveyardModel[];
 
@@ -27,4 +27,9 @@ export class GraveyardsListComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription){
+      this.subscription.unsubscribe();
+    }
+  }
 }

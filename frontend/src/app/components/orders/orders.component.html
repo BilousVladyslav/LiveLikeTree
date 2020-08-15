@@ -1,15 +1,15 @@
 <div class="container col-9 mx-auto">
-    <h4 class="m-3" style="color: white">{{ 'orders.title' | translate:locale.language }}</h4>
+    <h4 class="m-4" style="color: white">{{ 'orders.title' | translate:locale.language }}</h4>
 
     <div class=''>
 
         <div *ngFor="let order of orders" class="">
-            <mat-card class="m-2">
+            <mat-card class="m-3">
                 <mat-card-header>
                     <mat-icon mat-card-avatar aria-hidden="false" aria-label="Example home icon">content_paste</mat-icon>
                     <mat-card-title class='d-flex'>
                         <mat-chip-list [ngSwitch]="order.status" class='mr-3'>
-                            <mat-chip *ngSwitchCase="'paid'">{{ 'orders.status.paid' | translate:locale.language }}</mat-chip>
+                            <mat-chip *ngSwitchCase="'paid'" color="accent" selected>{{ 'orders.status.paid' | translate:locale.language }}</mat-chip>
                             <mat-chip *ngSwitchCase="'cancelled'">{{ 'orders.status.cancelled' | translate:locale.language }}</mat-chip>
                             <mat-chip *ngSwitchCase="'waiting'" color="primary" selected>{{ 'orders.status.waiting' | translate:locale.language }}</mat-chip>
                         </mat-chip-list>

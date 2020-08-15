@@ -34,12 +34,11 @@ class PlaceSerializer(serializers.ModelSerializer):
 
 
 class PlaceInfoSerializer(serializers.ModelSerializer):
-    owner = UsersSerializer(many=False)
     location = GraveyardInfoSerializer(many=False)
 
     class Meta:
         model = Place
-        fields = '__all__'
+        exclude = ['is_busy', 'owner']
 
 
 class PlaceStatusUpdateSerializer(serializers.ModelSerializer):

@@ -6,6 +6,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { GraveyardsListComponent } from './components/graveyards-list/graveyards-list.component';
 import { GraveyardComponent } from './components/graveyard/graveyard.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { PlacesComponent } from './components/places/places.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent
+  },
+  {
+    path: 'places',
+    component: PlacesComponent
   },
 ];
 
