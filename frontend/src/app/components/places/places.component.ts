@@ -12,7 +12,7 @@ import { PlaceInfoModel } from 'src/app/shared/models/place.model';
   styleUrls: ['./places.component.css']
 })
 export class PlacesComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   places: PlaceInfoModel[];
   displayedColumns: string[] = ['graveyardName', 'graveyardAddress', 'placeNumber', 'tree', 'treeStatus'];
 
@@ -22,11 +22,11 @@ export class PlacesComponent implements OnInit, OnDestroy {
     private router: Router,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
-    authService.isLoggedIn.subscribe(logged => {
+    this.subscription.add(authService.isLoggedIn.subscribe(logged => {
       if (!logged){
         this.router.navigate(['']);
       }
-    });
+    }));
    }
 
   ngOnInit(): void {
@@ -34,16 +34,14 @@ export class PlacesComponent implements OnInit, OnDestroy {
   }
 
   getPlaces(): void{
-    this.placesService.GetMyPlaces().subscribe(
+    this.subscription.add(this.placesService.GetMyPlaces().subscribe(
       res => {
         this.places = res;
-      });
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
-
 }

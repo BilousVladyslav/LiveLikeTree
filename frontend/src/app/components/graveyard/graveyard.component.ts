@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
   styleUrls: ['./graveyard.component.css']
 })
 export class GraveyardComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   graveyardId: string;
   graveyard: GraveyardModel;
   places: PlaceModel[];
@@ -42,25 +42,27 @@ export class GraveyardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(x => {
+    this.subscription.add(this.authService.isLoggedIn.subscribe(x => {
       this.isLogged = x;
-    });
+    }));
 
-    this.graveyardService.GetConcreteGraveyard(this.graveyardId)
+    this.subscription.add(this.graveyardService.GetConcreteGraveyard(this.graveyardId)
       .subscribe(data => {
         this.graveyard = data;
         if (this.isLogged) {
           this.createOrderFormGroup();
         }
-      });
+      })
+    );
     this.getPlaces();
   }
 
   getPlaces(): void{
-    this.placesService.GetPlaces(this.graveyardId)
+    this.subscription.add(this.placesService.GetPlaces(this.graveyardId)
       .subscribe(data => {
         this.places = data;
-      });
+      })
+    );
   }
 
   createOrderFormGroup(): void {
@@ -114,7 +116,7 @@ export class GraveyardComponent implements OnInit, OnDestroy {
 
   onSubmit(): void{
     const orderViewModel = this.orderFormGroup.value as CreateOrderModel;
-    this.ordersServise.CreateOrder(orderViewModel).subscribe(
+    this.subscription.add(this.ordersServise.CreateOrder(orderViewModel).subscribe(
       res => {
         this._snackBar.open('Successdully created order.', 'Close', {
           duration: 3000,
@@ -128,7 +130,8 @@ export class GraveyardComponent implements OnInit, OnDestroy {
         this._snackBar.open(error, 'Close', {
           duration: 3000,
         });
-      });
+      })
+    );
   }
 
   formIsValid(): boolean{
@@ -136,8 +139,6 @@ export class GraveyardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 }

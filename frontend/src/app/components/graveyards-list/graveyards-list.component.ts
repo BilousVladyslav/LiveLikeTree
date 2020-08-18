@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./graveyards-list.component.css']
 })
 export class GraveyardsListComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   graveyards: GraveyardModel[];
 
   constructor(
@@ -21,15 +21,14 @@ export class GraveyardsListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.graveyardService.GetGraveyards()
+    this.subscription.add(this.graveyardService.GetGraveyards()
       .subscribe(data => {
         this.graveyards = data;
-      });
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 }

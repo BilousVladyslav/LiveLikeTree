@@ -11,8 +11,8 @@ import { L10N_LOCALE, L10nLocale } from 'angular-l10n';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  private subscription: Subscription;
+export class LoginComponent implements OnInit, OnDestroy {
+  private subscription: Subscription = new Subscription();
   submited: boolean;
   returnUrl: string;
   loginForm: FormGroup;
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.createForm();
   }
 
@@ -53,24 +53,18 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginViewModel: UserLogin): void {
-    this.subscription = this.authenticationService
+    this.subscription.add(this.authenticationService
       .login(loginViewModel)
       .subscribe(
         res => {
           document.getElementById('closeModal').click();
           this.router.navigate(['']);
         },
-        errors => this.errorMessage = errors.message);
-  }
-
-  formIsValid(): boolean {
-    return this.loginForm.status === 'VALID';
+        errors => this.errorMessage = errors.message)
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
-
 }

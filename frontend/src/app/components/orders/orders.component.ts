@@ -13,7 +13,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   orders: OrderInfoModel[];
 
   constructor(
@@ -23,11 +23,11 @@ export class OrdersComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
-    authService.isLoggedIn.subscribe(logged => {
+    this.subscription.add(authService.isLoggedIn.subscribe(logged => {
       if (!logged){
         this.router.navigate(['']);
       }
-    });
+    }));
    }
 
   ngOnInit(): void {
@@ -35,14 +35,15 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   getOrders(): void {
-    this.ordersServise.GetOrders().subscribe(
+    this.subscription.add(this.ordersServise.GetOrders().subscribe(
       res => {
         this.orders = res;
-      });
+      })
+    );
   }
 
   sendOrder(orderPay: ManageOrderModel): void {
-    this.ordersServise.UpdateOrderStatus(orderPay).subscribe(
+    this.subscription.add(this.ordersServise.UpdateOrderStatus(orderPay).subscribe(
       res => {
         this.getOrders();
       },
@@ -50,7 +51,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
         this._snackBar.open(error, 'Close', {
           duration: 5000,
         });
-      });
+      })
+    );
   }
 
   onPay(orderId, toPay): void{
@@ -72,8 +74,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 }
