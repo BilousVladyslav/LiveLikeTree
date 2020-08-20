@@ -12,7 +12,7 @@ def get_tree_status():
 
 
 while True:
-    all_places = requests.get('http://127.0.0.1:8000/api/places/').json()
+    all_places = requests.get('http://localhost:8000/api/places/').json()
 
     if len(all_places) == 0:
         # logging.warning('Create graveyard, places does not exist.')
@@ -28,7 +28,7 @@ while True:
 
         # logging.debug(f'Tree {place["id"]} is {update_tree_status["tree_status"]} now.')
 
-        place_url = 'http://127.0.0.1:8000/api/places/' + str(place['id']) + '/'
+        place_url = 'http://localhost:8000/api/places/' + str(place['id']) + '/'
         requests.put(place_url, update_tree_status)
 
         time.sleep(1)

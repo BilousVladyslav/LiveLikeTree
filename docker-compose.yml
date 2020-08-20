@@ -1,19 +1,29 @@
 version: '3.7'
 services:
-  web:
+  backend:
     build: 
-        context: .
+        context: ./backend
         dockerfile: Dockerfile
-    command: sh -c "python backend/live_like_tree/manage.py runserver 0.0.0.0:8000 ; cd frontend && ng serve  --host=0.0.0.0 --port 4200"
+    command: python backend/live_like_tree/manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./backend/:/usr/src/app/backend/
+      - ./:/usr/src/app/backend/
     ports:
       - 8000:8000
-      - 4200:4200
     depends_on:
       - db
     env_file:
-      - ./.env.dev
+      - ./backend/.env.dev
+  frontend:
+    build: 
+        context: ./frontend
+        dockerfile: Dockerfile
+    command: ng serve  --host=0.0.0.0 --port 4200
+    volumes:
+      - ./usr/src/app/frontend/node_modules
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
   db:
     build: 
       context: ./db
@@ -25,12 +35,5 @@ services:
       - POSTGRES_USER=live_like_tree_user
       - POSTGRES_PASSWORD=FKn2fiNflka1f
       - POSTGRES_DB=live_like_tree_db
-  iot:
-    build: 
-        context: ./iot
-        dockerfile: Dockerfile
-    command: python emulator.py
-    depends_on:
-      - web
 volumes:
   postgres_data:
