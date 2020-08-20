@@ -1,4 +1,4 @@
-FROM  nikolaik/python-nodejs:python3.6-nodejs10-alpine
+FROM  nikolaik/python-nodejs:python3.8-nodejs10-alpine
 
 WORKDIR /usr/src/app
 
@@ -15,7 +15,9 @@ RUN pip install --upgrade pip
 
 RUN pip install -r backend/requirements.txt
 
-RUN npm install
-RUN npm install -g @angular/cli
+# WORKDIR /usr/src/app/frontend
 
+# RUN npm install
+# RUN npm install -g @angular/cli
 
+# WORKDIR /usr/src/app

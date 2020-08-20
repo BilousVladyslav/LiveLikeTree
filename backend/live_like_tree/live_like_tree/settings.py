@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,8 +83,8 @@ DATABASES = {
         'NAME': 'live_like_tree_db',
         'USER': 'live_like_tree_user',
         'PASSWORD': 'FKn2fiNflka1f',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
