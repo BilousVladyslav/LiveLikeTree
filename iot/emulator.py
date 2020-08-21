@@ -1,10 +1,14 @@
-import requests
+import os
 import time
 import logging
+import requests
 from random import choice
 
 
-# logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
+
+
+URL = 'http://' + os.environ.get("DJANGO_BACKEND", "127.0.0.1") + ':' +  os.environ.get("DJANGO_BACKEND_PORT", "8000") + '/api/'
 
 
 def get_tree_status():
@@ -12,24 +16,28 @@ def get_tree_status():
 
 
 while True:
-    all_places = requests.get('http://localhost:8000/api/places/').json()
+    try:
+        all_places = requests.get(URL + 'places/').json()
 
-    if len(all_places) == 0:
-        # logging.warning('Create graveyard, places does not exist.')
-        break
+        if len(all_places) == 0:
+            logging.error('Create graveyard, places does not exist.')
+            break
 
-    for place in all_places:
-        if not place['is_busy']:
-            continue
+        for place in all_places:
+            if not place['is_busy']:
+                continue
 
-        update_tree_status = {
-            'tree_status': get_tree_status()
-        }
+            update_tree_status = {
+                'tree_status': get_tree_status()
+            }
 
-        # logging.debug(f'Tree {place["id"]} is {update_tree_status["tree_status"]} now.')
+            logging.warning(f'Tree {place["id"]} is {update_tree_status["tree_status"]} now.')
 
-        place_url = 'http://localhost:8000/api/places/' + str(place['id']) + '/'
-        requests.put(place_url, update_tree_status)
+            place_url = URL + 'places/' + str(place['id']) + '/'
+            requests.put(place_url, update_tree_status)
 
-        time.sleep(1)
-    time.sleep(1)
+            time.sleep(2)
+    except:
+        time.sleep(4)
+    else:
+        time.sleep(2)

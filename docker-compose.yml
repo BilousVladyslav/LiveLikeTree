@@ -35,5 +35,16 @@ services:
       - POSTGRES_USER=live_like_tree_user
       - POSTGRES_PASSWORD=FKn2fiNflka1f
       - POSTGRES_DB=live_like_tree_db
+  iot:
+    build: 
+        context: ./iot
+        dockerfile: Dockerfile
+    command: python emulator.py
+    volumes:
+      - ./:/usr/src/app/iot/
+    depends_on:
+      - backend
+    env_file:
+      - ./iot/.env.dev
 volumes:
   postgres_data:
