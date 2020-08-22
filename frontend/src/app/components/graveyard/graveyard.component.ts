@@ -77,7 +77,7 @@ export class GraveyardComponent implements OnInit, OnDestroy {
     return this.fb.group({
       id: new FormControl(place.id),
       number: new FormControl(place.number),
-      tree: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      tree: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
     });
   }
 

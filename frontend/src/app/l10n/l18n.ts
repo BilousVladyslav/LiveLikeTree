@@ -48,7 +48,8 @@ export const i18nAsset = {
         password: {
           placeholder: 'Password',
           required: 'Password is a required',
-          min_length: 'Password must be a minimum of 6 characters',
+          min_length: 'Password must be a minimum of 8 characters',
+          max_length: 'Password requires maximum 40 symbols',
           regex: 'Password must have uppercase and lowercase Latin letters, digit and character'
         },
         password_confirm: {
@@ -120,7 +121,8 @@ export const i18nAsset = {
             tree: {
               placeholder: 'The type of tree you want to plant',
               required: 'This field is a required',
-              minLength: 'This fieeld must have minimum 5 symbols'
+              minLength: 'This field must have minimum 5 symbols',
+              maxLength: 'This field requires maximum 150 symbols'
             },
             price: 'Price'
           },
@@ -200,7 +202,8 @@ export const i18nAsset = {
         password: {
           placeholder: 'Пароль',
           required: 'Пароль обов\'язковий',
-          min_length: 'Пароль має складати мінімум 6 символів',
+          min_length: 'Пароль має складати мінімум 8 символів',
+          max_length: 'Пароль може складати максимум 40 букв',
           regex: 'Пароль має містити букви верхнього та нижнього регістрів, цифри та символи'
         },
         password_confirm: {
@@ -280,7 +283,8 @@ export const i18nAsset = {
             tree: {
               placeholder: 'Сорт дерева, яке ви бажаєте посадити',
               required: 'Це поле обов\'язкове',
-              minLength: 'Це поле має містити не менше 5 символів'
+              minLength: 'Це поле має містити не менше 5 символів',
+              maxLength: 'Це поле може складати максимум 150 букв'
             },
             price: 'Ціна'
           },

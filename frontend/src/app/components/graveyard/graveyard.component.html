@@ -55,10 +55,13 @@
                             <input matInput formControlName="tree" placeholder="{{ 'graveyard.order.place.tree.placeholder' | translate:locale.language }}">
                             <mat-error *ngIf="place.controls.tree.errors && (place.controls.tree.dirty || place.controls.tree.touched)">
                                 <mat-error *ngIf="place.controls.tree.errors.required" class="error-message">
-                                *{{ 'graveyard.order.place.tree.required' | translate:locale.language }}
+                                    *{{ 'graveyard.order.place.tree.required' | translate:locale.language }}
                                 </mat-error>
                                 <mat-error *ngIf="place.controls.tree.errors.minLength" class="error-message">
-                                *{{ 'graveyard.order.place.tree.minLength' | translate:locale.language }}
+                                    *{{ 'graveyard.order.place.tree.minLength' | translate:locale.language }}
+                                </mat-error>
+                                <mat-error *ngIf="place.controls.tree.errors.maxLength" class="error-message">
+                                    *{{ 'graveyard.order.place.tree.maxLength' | translate:locale.language }}
                                 </mat-error>
                             </mat-error>
                         </mat-form-field>

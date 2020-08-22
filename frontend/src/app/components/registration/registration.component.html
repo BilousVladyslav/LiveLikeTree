@@ -11,6 +11,9 @@
         <mat-error *ngIf="registerForm.controls.username.errors.required" class="error-message">
           *{{ 'register.username.required' | translate:locale.language }}
         </mat-error>
+        <mat-error *ngIf="registerForm.controls.username.errors.minlength">
+          *{{ 'register.username.min_length' | translate:locale.language }}
+        </mat-error>
       </mat-error>
     </mat-form-field>
 
@@ -34,6 +37,9 @@
         </mat-error>
         <mat-error *ngIf="registerForm.controls.password.errors.pattern">
           *{{ 'register.password.regex' | translate:locale.language }}
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.password.errors.maxlength">
+          *{{ 'register.password.max_length' | translate:locale.language }}
         </mat-error>
       </mat-error>
     </mat-form-field>

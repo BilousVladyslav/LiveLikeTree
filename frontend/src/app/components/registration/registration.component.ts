@@ -40,11 +40,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   createForm(): void {
     this.registerForm = this.fb.group({
       username: new FormControl(
-        '', [Validators.required]),
+        '', [Validators.required, Validators.minLength(5)]),
       email: new FormControl(
         '', [Validators.required, Validators.pattern(EmailRegex.Regex)]),
       password: new FormControl(
-        '', [Validators.required, Validators.minLength(6), Validators.pattern(PasswordRegex.Regex)]),
+        '', [Validators.required, Validators.minLength(8), Validators.pattern(PasswordRegex.Regex), Validators.maxLength(40)]),
       confirm_password: new FormControl(
         '', [Validators.required]),
       first_name: new FormControl(
